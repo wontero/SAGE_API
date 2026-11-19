@@ -461,3 +461,4 @@ Cada agente agrega **una entrada al terminar** (y otra si deja un BLOQUEO). No b
 - Pruebas que no dieron el código esperado: ninguna.
 - Pendientes o BLOQUEOS: ninguno.
 - Último commit: 8cdd800
+- Ajuste: user-secrets init y Pkcs parcheado (ver commit siguiente al de API-M2)
