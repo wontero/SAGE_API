@@ -145,7 +145,7 @@ SAGE_API/
 
 ## 5. Mateo — proyecto, modelo, base y Swagger
 
-### - [ ] API-M1 · Solución, proyecto y modelo
+### - [x] API-M1 · Solución, proyecto y modelo
 
 1. En la raíz del repo:
    ```
@@ -218,7 +218,7 @@ SAGE_API/
    ```
 10. **Comprobar:** `dotnet build` sin errores. Commit `API-M1`.
 
-### - [ ] API-M2 · Datos de prueba, migración y README base
+### - [x] API-M2 · Datos de prueba, migración y README base
 
 1. `Data/DatosSemilla.cs`: clase estática con un método `Cargar(ModelBuilder modelBuilder)` que llama a `HasData` con **exactamente** estos datos, y llámalo al final de `OnModelCreating`. Fecha fija para todos: `new DateTime(2026, 7, 1, 12, 0, 0, DateTimeKind.Utc)` (nunca `DateTime.UtcNow` en la semilla).
 
@@ -453,3 +453,11 @@ Cada agente agrega **una entrada al terminar** (y otra si deja un BLOQUEO). No b
 ```
 
 <!-- Las entradas van debajo de esta línea -->
+
+### 2026-11-19 17:36 (UTC-4) — Mateo — API-M1 y API-M2
+
+- Hecho: solución, proyecto, modelo, DbContext, Swagger, semilla, migración `Inicial` y README base. SQL Server Express confirmó 3 empresas y 9 facturas. Swagger respondió HTTP 200 y la aplicación se detuvo después de la prueba. Ambas compilaciones terminaron sin errores, con avisos NU1902 y NU1903 de NuGet sobre `System.Security.Cryptography.Pkcs` 9.0.11.
+- Desvíos de la guía y motivo: el `git pull` inicial no encontró `origin/main` porque el remoto estaba vacío. Por instrucción de Mateo se omitió `dotnet user-secrets init` y se usó la conexión de Windows de `appsettings.json`. La restauración guardó EF Core Tools en la caché global de NuGet.
+- Pruebas que no dieron el código esperado: ninguna.
+- Pendientes o BLOQUEOS: ninguno.
+- Último commit: 8cdd800

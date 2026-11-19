@@ -25,5 +25,7 @@ public class SageApiDbContext(DbContextOptions<SageApiDbContext> options) : DbCo
             .HasForeignKey(f => f.EmpresaId)
             .OnDelete(DeleteBehavior.Restrict);
         facturas.ToTable(t => t.HasCheckConstraint("CK_Facturas_Mes", "[Mes] BETWEEN 1 AND 12"));
+
+        DatosSemilla.Cargar(modelBuilder);
     }
 }
