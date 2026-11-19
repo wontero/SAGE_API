@@ -1,0 +1,5 @@
+<Solution>
+  <Folder Name="/src/">
+    <Project Path="src/SAGE.Api/SAGE.Api.csproj" />
+  </Folder>
+</Solution>

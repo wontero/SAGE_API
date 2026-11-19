@@ -1,0 +1,6 @@
+@SAGE.Api_HostAddress = http://localhost:5163
+
+GET {{SAGE.Api_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
