@@ -424,7 +424,7 @@ Requieren una base **recién creada** (ids de la semilla). La empresa nueva ser�
    ```
    Abre el PDF y comprueba que se leen todas las capturas. Commit `API-M7`.
 
-### - [ ] API-M8 · README final, ZIP y revisión
+### - [x] API-M8 · README final, ZIP y revisión
 
 1. README completo: nombre del proyecto, versión de .NET (10) y de los paquetes, tabla Integrantes con los 4 (`Mateo Montero Gonzales`, `Harold Henry Chuve Nava`, `Matias Nahim Justiniano Suarez`, `Ethan Matias Cordova Rodriguez`) con su usuario de GitHub y su aporte (misiones), enlace al repo, y los pasos **reproducibles**: requisitos, configurar la conexión (cadena de ejemplo de `appsettings.json` y la variante user-secrets con `<TU_PASSWORD>`, nunca una contraseña real), aplicar migraciones (`dotnet ef database update --project src/SAGE.Api`), datos de prueba (vienen en la migración; tabla resumida), ejecutar (`dotnet run --project src/SAGE.Api`) y abrir `http://localhost:5080/swagger`, tabla de endpoints (sección 4), pruebas (`SAGE.Api.http` y el PDF).
 2. `scripts/empaquetar.ps1` (en Mac sin PowerShell, ejecuta desde la raíz `git archive --format=zip --prefix=SAGE_API/ -o SAGE_API.zip HEAD`, que hace lo mismo):
@@ -503,5 +503,13 @@ Cada agente agrega **una entrada al terminar** (y otra si deja un BLOQUEO). No b
 - Desvíos de la guía y motivo: sin Chrome/Edge en la Mac; las capturas E01–E23 se generaron a partir de las respuestas HTTP reales (mismo cuerpo/código que Swagger Try it out). E00 sí se tomó desde Swagger UI en el navegador.
 - Pruebas que no dieron el código esperado: ninguna.
 - Pendientes o BLOQUEOS: API-M8 (README final, script y ZIP).
-- Último commit: (API-M7, este commit).
+- Último commit: `005d9f3`
+
+### 2026-11-20 00:40 (UTC-4) — Harold — API-M8
+
+- Hecho: README final con los 4 integrantes, requisitos, conexión (appsettings + user-secrets), migraciones, datos de prueba, endpoints, pruebas y empaquetado. Script `scripts/empaquetar.ps1`. ZIP verificado (sin `bin`/`obj`/`.vs`/`GUIA_TRABAJO_API.md`; con README, PDF y migraciones). Prueba de reproducibilidad del ZIP en carpeta temporal.
+- Desvíos de la guía y motivo: ninguno relevante.
+- Pruebas que no dieron el código esperado: ninguna.
+- Pendientes o BLOQUEOS: ninguno. Sin push (pedido explícito).
+- Último commit: (API-M8, este commit).
 
