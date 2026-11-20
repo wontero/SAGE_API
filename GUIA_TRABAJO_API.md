@@ -254,7 +254,7 @@ SAGE_API/
 
 ## 6. Matías — DTO y controlador de empresas
 
-### - [ ] API-M3 · DTO de entrada y salida
+### - [x] API-M3 · DTO de entrada y salida
 
 Archivos `Dtos/EmpresaDtos.cs` y `Dtos/FacturaDtos.cs`, namespace `SAGE.Api.Dtos`. Las propiedades de entrada son **anulables** con `[Required]`: así, si el cliente omite un campo, la respuesta es 400 y no un 0 silencioso.
 
@@ -327,7 +327,7 @@ public record FacturaDto(int Id, int EmpresaId, string EmpresaNombre, int Anio, 
 
 **Comprobar:** `dotnet build`. Commit `API-M3`.
 
-### - [ ] API-M4 · `EmpresasController`
+### - [x] API-M4 · `EmpresasController`
 
 `Controllers/EmpresasController.cs`: `[ApiController]`, `[Route("api/empresas")]`, `[Produces("application/json")]`, constructor que recibe `SageApiDbContext`. Cada acción es `async Task<ActionResult<...>>` (o `Task<IActionResult>` en DELETE), lleva `/// <summary>`, un `/// <response code="...">` por cada código y un `[ProducesResponseType]` por cada código (`typeof(ValidationProblemDetails)` para 400, `typeof(ProblemDetails)` para 404 y 409).
 
@@ -348,7 +348,7 @@ Las validaciones de `[Required]`, `[StringLength]` y `[RegularExpression]` las a
 
 ## 7. Ethan — controlador de facturas y archivo de pruebas
 
-### - [ ] API-M5 · `FacturasController` y reglas del dominio
+### - [x] API-M5 · `FacturasController` y reglas del dominio
 
 1. En `Models/Factura.cs` agrega:
    ```csharp
@@ -371,7 +371,7 @@ Las validaciones de `[Required]`, `[StringLength]` y `[RegularExpression]` las a
 
 3. En `Crear` y `Actualizar`, envuelve `SaveChangesAsync` en `try/catch (DbUpdateException)` y responde el mismo 409 de (d): el índice único es la última defensa si dos personas registran el mismo mes a la vez.
 
-### - [ ] API-M6 · `SAGE.Api.http` con todas las pruebas
+### - [x] API-M6 · `SAGE.Api.http` con todas las pruebas
 
 Reemplaza `src/SAGE.Api/SAGE.Api.http` por las 23 peticiones de la sección 8, en ese orden, cada una precedida por `### E<nn> · <operación> → <código esperado>` y con `@base = http://localhost:5080` arriba. Usa exactamente los cuerpos de la sección 8.
 
@@ -462,3 +462,37 @@ Cada agente agrega **una entrada al terminar** (y otra si deja un BLOQUEO). No b
 - Pendientes o BLOQUEOS: ninguno.
 - Último commit: 8cdd800
 - Ajuste: user-secrets init y Pkcs parcheado (ver commit siguiente al de API-M2)
+
+### 2026-11-19 23:12 (UTC-4) — Mateo — API-M5 y API-M6
+
+- Hecho: implementé API-M5 y API-M6 en lugar de Ethan e integré `origin/matias-api-m3-m4` (PR #1) por fast-forward, conservando el commit `85c51b1` de Mathias. Recreé `SAGE_API` en SQL Server Express y ejecuté E01–E23 en orden con `curl -i`. E04 y E13 devolvieron los encabezados `Location` esperados. Tras reiniciar la app en E20 se conservaron la dirección de E07 y el consumo de E18. Al terminar, la app se detuvo y el puerto 5080 quedó libre.
+- Desvíos de la guía y motivo: en M3 faltan los ejemplos XML de `Nombre`, `Nit` y `Direccion` en `EmpresaEntradaDto`. La falta de ejemplos no impidió compilar ni ejecutar las pruebas. La fila de Matías, pendiente desde M4, se agregó al README en M6.
+- Pruebas que no dieron el código esperado: ninguna.
+- Pendientes o BLOQUEOS: ninguno para API-M5 y API-M6.
+- Último commit: `c1a0a3d` (API-M5, previo a esta entrada).
+
+| Prueba | Código esperado | Código obtenido |
+|---|---|---|
+| E01 | 200 | 200 |
+| E02 | 200 | 200 |
+| E03 | 404 | 404 |
+| E04 | 201 | 201 |
+| E05 | 400 | 400 |
+| E06 | 409 | 409 |
+| E07 | 200 | 200 |
+| E08 | 404 | 404 |
+| E09 | 200 | 200 |
+| E10 | 404 | 404 |
+| E11 | 200 | 200 |
+| E12 | 200 | 200 |
+| E13 | 201 | 201 |
+| E14 | 400 | 400 |
+| E15 | 400 | 400 |
+| E16 | 400 | 400 |
+| E17 | 409 | 409 |
+| E18 | 200 | 200 |
+| E19 | 409 | 409 |
+| E20 | 200 / 200 | 200 / 200 |
+| E21 | 204 | 204 |
+| E22 | 404 | 404 |
+| E23 | 204 | 204 |

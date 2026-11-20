@@ -1,6 +1,107 @@
-@SAGE.Api_HostAddress = http://localhost:5163
+@base = http://localhost:5080
 
-GET {{SAGE.Api_HostAddress}}/weatherforecast/
-Accept: application/json
+### E01 · GET /api/empresas → 200
+GET {{base}}/api/empresas
 
-###
+### E02 · GET /api/empresas/1 → 200
+GET {{base}}/api/empresas/1
+
+### E03 · GET /api/empresas/999 → 404
+GET {{base}}/api/empresas/999
+
+### E04 · POST /api/empresas → 201
+POST {{base}}/api/empresas
+Content-Type: application/json
+
+{"nombre":"Clínica San Lucas","nit":"4455667011","direccion":"Av. Banzer 450, Santa Cruz","activa":true}
+
+### E05 · POST /api/empresas → 400
+POST {{base}}/api/empresas
+Content-Type: application/json
+
+{"nombre":"","nit":"ABC-12"}
+
+### E06 · POST /api/empresas → 409
+POST {{base}}/api/empresas
+Content-Type: application/json
+
+{"nombre":"Copia","nit":"1023456027"}
+
+### E07 · PUT /api/empresas/4 → 200
+PUT {{base}}/api/empresas/4
+Content-Type: application/json
+
+{"nombre":"Clínica San Lucas","nit":"4455667011","direccion":"Av. Banzer 455, 3er anillo, Santa Cruz","activa":true}
+
+### E08 · PUT /api/empresas/999 → 404
+PUT {{base}}/api/empresas/999
+Content-Type: application/json
+
+{"nombre":"Clínica San Lucas","nit":"4455667011","direccion":"Av. Banzer 455, 3er anillo, Santa Cruz","activa":true}
+
+### E09 · GET /api/empresas/1/facturas → 200
+GET {{base}}/api/empresas/1/facturas
+
+### E10 · GET /api/empresas/999/facturas → 404
+GET {{base}}/api/empresas/999/facturas
+
+### E11 · GET /api/facturas?empresaId=2 → 200
+GET {{base}}/api/facturas?empresaId=2
+
+### E12 · GET /api/facturas/1 → 200
+GET {{base}}/api/facturas/1
+
+### E13 · POST /api/facturas → 201
+POST {{base}}/api/facturas
+Content-Type: application/json
+
+{"empresaId":4,"anio":2026,"mes":10,"consumoKwh":1750.5,"montoBs":1575.45}
+
+### E14 · POST /api/facturas → 400
+POST {{base}}/api/facturas
+Content-Type: application/json
+
+{"empresaId":999,"anio":2026,"mes":10,"consumoKwh":100,"montoBs":90}
+
+### E15 · POST /api/facturas → 400
+POST {{base}}/api/facturas
+Content-Type: application/json
+
+{"empresaId":1,"anio":2026,"mes":13}
+
+### E16 · POST /api/facturas → 400
+POST {{base}}/api/facturas
+Content-Type: application/json
+
+{"empresaId":1,"anio":2030,"mes":1,"consumoKwh":100,"montoBs":90}
+
+### E17 · POST /api/facturas → 409
+POST {{base}}/api/facturas
+Content-Type: application/json
+
+{"empresaId":1,"anio":2026,"mes":1,"consumoKwh":100,"montoBs":90}
+
+### E18 · PUT /api/facturas/10 → 200
+PUT {{base}}/api/facturas/10
+Content-Type: application/json
+
+{"empresaId":4,"anio":2026,"mes":10,"consumoKwh":1802.25,"montoBs":1622.03}
+
+### E19 · DELETE /api/empresas/1 → 409
+DELETE {{base}}/api/empresas/1
+
+### E20 · Reiniciar la app y GET /api/empresas/4 + GET /api/facturas/10 → 200
+# Detén y vuelve a arrancar la app antes de ejecutar estos dos GET.
+GET {{base}}/api/empresas/4
+
+### Segundo GET de E20 · GET /api/facturas/10 → 200
+GET {{base}}/api/facturas/10
+
+### E21 · DELETE /api/facturas/10 → 204
+DELETE {{base}}/api/facturas/10
+
+### E22 · DELETE /api/facturas/10 → 404
+DELETE {{base}}/api/facturas/10
+
+### E23 · DELETE /api/empresas/4 → 204
+DELETE {{base}}/api/empresas/4

@@ -11,7 +11,8 @@ Web API de empresas y facturas de energía del Sistema de Análisis y Gestión E
 
 | Nombre | Usuario de GitHub | Aporte |
 |---|---|---|
-| Mateo Montero Gonzales | `wontero` | API-M1 y API-M2. Solución, modelo, DbContext, Swagger, semilla, migración `Inicial` y README base. |
+| Mateo Montero Gonzales | `wontero` | API-M1 y API-M2. Solución, modelo, DbContext, Swagger, semilla, migración `Inicial` y README base. API-M5 y API-M6. Controlador de facturas y pruebas E01–E23. |
+| Matias Nahim Justiniano Suarez | `lowgaara909-sudo` | API-M3 y API-M4. DTO y controlador de empresas. |
 
 ## Configurar la conexión
 
