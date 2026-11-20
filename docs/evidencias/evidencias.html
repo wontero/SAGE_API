@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>Evidencias SAGE API</title>
+<style>
+body{font-family:Georgia,serif;margin:0;color:#222;background:#fff}
+.page{max-width:900px;margin:0 auto;padding:32px 24px}
+h1{font-size:28px;margin-bottom:4px}
+h2{font-size:18px;margin-top:36px;border-bottom:1px solid #ddd;padding-bottom:6px}
+table{border-collapse:collapse;width:100%;margin:16px 0}
+td,th{border:1px solid #ccc;padding:8px;text-align:left;font-size:14px}
+.cover{min-height:90vh;display:flex;flex-direction:column;justify-content:center}
+.meta{color:#555;font-size:15px;line-height:1.6}
+@media print { .cover{min-height:100vh;page-break-after:always} section{page-break-inside:avoid} }
+</style>
+</head>
+<body>
+<div class="page">
+  <div class="cover">
+    <h1>SAGE API — Evidencias de pruebas E01–E23</h1>
+    <p class="meta">
+      Web API de empresas y facturas · .NET 10 · EF Core 10.0.11 · Swashbuckle 11.0.1<br>
+      Repositorio: <a href="https://github.com/wontero/SAGE_API">https://github.com/wontero/SAGE_API</a><br>
+      Fecha: 20 de noviembre de 2026
+    </p>
+    <h3>Integrantes</h3>
+    <table>
+      <tr><th>Nombre</th><th>GitHub</th><th>Aporte</th></tr>
+      <tr><td>Mateo Montero Gonzales</td><td>wontero</td><td>API-M1, M2, M5 y M6</td></tr>
+      <tr><td>Matias Nahim Justiniano Suarez</td><td>lowgaara909-sudo</td><td>API-M3 y M4</td></tr>
+      <tr><td>Ethan Matias Cordova Rodriguez</td><td>kawerlev-a11y</td><td>API-M5/M6 asignadas; ejecutadas por Mateo</td></tr>
+      <tr><td>Harold Henry Chuve Nava</td><td>hnava08</td><td>API-M7 y M8</td></tr>
+    </table>
+    <p class="meta">Incluye capturas de Swagger (E00) y de cada prueba E01–E23 con respuesta real de <code>http://localhost:5080</code>.</p>
+    <figure><img src="E00_swagger_endpoints.png" alt="Swagger endpoints" style="max-width:100%;border:1px solid #ccc"></figure>
+    <figure><img src="E00_swagger_esquemas.png" alt="Swagger schemas" style="max-width:100%;border:1px solid #ccc"></figure>
+  </div>
+  
+<section id="E01">
+  <h2>E01 · GET /api/empresas → 200</h2>
+  <p><strong>Qué demuestra:</strong> éxito: listado de 3 empresas</p>
+  
+  <p>Código obtenido: <strong>200</strong> (esperado 200) — OK</p>
+  <figure><img src="E01_GET_empresas_200.png" alt="E01" style="max-width:100%;border:1px solid #ccc"></figure>
+</section>
+<section id="E02">
+  <h2>E02 · GET /api/empresas/1 → 200</h2>
+  <p><strong>Qué demuestra:</strong> éxito: cantidadFacturas 6</p>
+  
+  <p>Código obtenido: <strong>200</strong> (esperado 200) — OK</p>
+  <figure><img src="E02_GET_empresas_id_200.png" alt="E02" style="max-width:100%;border:1px solid #ccc"></figure>
+</section>
+<section id="E03">
+  <h2>E03 · GET /api/empresas/999 → 404</h2>
+  <p><strong>Qué demuestra:</strong> 404 empresa inexistente</p>
+  
+  <p>Código obtenido: <strong>404</strong> (esperado 404) — OK</p>
+  <figure><img src="E03_GET_empresas_id_404.png" alt="E03" style="max-width:100%;border:1px solid #ccc"></figure>
+</section>
+<section id="E04">
+  <h2>E04 · POST /api/empresas → 201</h2>
+  <p><strong>Qué demuestra:</strong> 201 Created + encabezado Location</p>
+  
+  <p>Código obtenido: <strong>201</strong> (esperado 201) — OK</p>
+  <figure><img src="E04_POST_empresas_201.png" alt="E04" style="max-width:100%;border:1px solid #ccc"></figure>
+</section>
+<section id="E05">
+  <h2>E05 · POST /api/empresas → 400</h2>
+  <p><strong>Qué demuestra:</strong> 400 validación de Nombre y Nit</p>
+  
+  <p>Código obtenido: <strong>400</strong> (esperado 400) — OK</p>
+  <figure><img src="E05_POST_empresas_400.png" alt="E05" style="max-width:100%;border:1px solid #ccc"></figure>
+</section>
+<section id="E06">
+  <h2>E06 · POST /api/empresas → 409</h2>
+  <p><strong>Qué demuestra:</strong> 409 NIT repetido</p>
+  
+  <p>Código obtenido: <strong>409</strong> (esperado 409) — OK</p>
+  <figure><img src="E06_POST_empresas_409.png" alt="E06" style="max-width:100%;border:1px solid #ccc"></figure>
+</section>
+<section id="E07">
+  <h2>E07 · PUT /api/empresas/4 → 200</h2>
+  <p><strong>Qué demuestra:</strong> éxito: actualización de dirección</p>
+  
+  <p>Código obtenido: <strong>200</strong> (esperado 200) — OK</p>
+  <figure><img src="E07_PUT_empresas_200.png" alt="E07" style="max-width:100%;border:1px solid #ccc"></figure>
+</section>
+<section id="E08">
+  <h2>E08 · PUT /api/empresas/999 → 404</h2>
+  <p><strong>Qué demuestra:</strong> 404 empresa inexistente</p>
+  
+  <p>Código obtenido: <strong>404</strong> (esperado 404) — OK</p>
+  <figure><img src="E08_PUT_empresas_404.png" alt="E08" style="max-width:100%;border:1px solid #ccc"></figure>
+</section>
+<section id="E09">
+  <h2>E09 · GET /api/empresas/1/facturas → 200</h2>
+  <p><strong>Qué demuestra:</strong> recurso relacionado: 6 facturas</p>
+  
+  <p>Código obtenido: <strong>200</strong> (esperado 200) — OK</p>
+  <figure><img src="E09_GET_empresas_facturas_200.png" alt="E09" style="max-width:100%;border:1px solid #ccc"></figure>
+</section>
+<section id="E10">
+  <h2>E10 · GET /api/empresas/999/facturas → 404</h2>
+  <p><strong>Qué demuestra:</strong> 404 empresa inexistente</p>
+  
+  <p>Código obtenido: <strong>404</strong> (esperado 404) — OK</p>
+  <figure><img src="E10_GET_empresas_facturas_404.png" alt="E10" style="max-width:100%;border:1px solid #ccc"></figure>
+</section>
+<section id="E11">
+  <h2>E11 · GET /api/facturas?empresaId=2 → 200</h2>
+  <p><strong>Qué demuestra:</strong> filtro por query empresaId</p>
+  
+  <p>Código obtenido: <strong>200</strong> (esperado 200) — OK</p>
+  <figure><img src="E11_GET_facturas_query_200.png" alt="E11" style="max-width:100%;border:1px solid #ccc"></figure>
+</section>
+<section id="E12">
+  <h2>E12 · GET /api/facturas/1 → 200</h2>
+  <p><strong>Qué demuestra:</strong> periodo Enero 2026</p>
+  
+  <p>Código obtenido: <strong>200</strong> (esperado 200) — OK</p>
+  <figure><img src="E12_GET_facturas_id_200.png" alt="E12" style="max-width:100%;border:1px solid #ccc"></figure>
+</section>
+<section id="E13">
+  <h2>E13 · POST /api/facturas → 201</h2>
+  <p><strong>Qué demuestra:</strong> 201 Created + Location de factura</p>
+  
+  <p>Código obtenido: <strong>201</strong> (esperado 201) — OK</p>
+  <figure><img src="E13_POST_facturas_201.png" alt="E13" style="max-width:100%;border:1px solid #ccc"></figure>
+</section>
+<section id="E14">
+  <h2>E14 · POST /api/facturas → 400</h2>
+  <p><strong>Qué demuestra:</strong> 400 referencia inválida EmpresaId</p>
+  
+  <p>Código obtenido: <strong>400</strong> (esperado 400) — OK</p>
+  <figure><img src="E14_POST_facturas_400_ref.png" alt="E14" style="max-width:100%;border:1px solid #ccc"></figure>
+</section>
+<section id="E15">
+  <h2>E15 · POST /api/facturas → 400</h2>
+  <p><strong>Qué demuestra:</strong> 400 mes fuera de rango / campos faltantes</p>
+  
+  <p>Código obtenido: <strong>400</strong> (esperado 400) — OK</p>
+  <figure><img src="E15_POST_facturas_400_rango.png" alt="E15" style="max-width:100%;border:1px solid #ccc"></figure>
+</section>
+<section id="E16">
+  <h2>E16 · POST /api/facturas → 400</h2>
+  <p><strong>Qué demuestra:</strong> 400 regla del dominio: periodo futuro</p>
+  
+  <p>Código obtenido: <strong>400</strong> (esperado 400) — OK</p>
+  <figure><img src="E16_POST_facturas_400_futuro.png" alt="E16" style="max-width:100%;border:1px solid #ccc"></figure>
+</section>
+<section id="E17">
+  <h2>E17 · POST /api/facturas → 409</h2>
+  <p><strong>Qué demuestra:</strong> 409 periodo repetido</p>
+  
+  <p>Código obtenido: <strong>409</strong> (esperado 409) — OK</p>
+  <figure><img src="E17_POST_facturas_409.png" alt="E17" style="max-width:100%;border:1px solid #ccc"></figure>
+</section>
+<section id="E18">
+  <h2>E18 · PUT /api/facturas/10 → 200</h2>
+  <p><strong>Qué demuestra:</strong> éxito: actualización de consumo/monto</p>
+  
+  <p>Código obtenido: <strong>200</strong> (esperado 200) — OK</p>
+  <figure><img src="E18_PUT_facturas_200.png" alt="E18" style="max-width:100%;border:1px solid #ccc"></figure>
+</section>
+<section id="E19">
+  <h2>E19 · DELETE /api/empresas/1 → 409</h2>
+  <p><strong>Qué demuestra:</strong> 409 empresa con facturas</p>
+  
+  <p>Código obtenido: <strong>409</strong> (esperado 409) — OK</p>
+  <figure><img src="E19_DELETE_empresas_409.png" alt="E19" style="max-width:100%;border:1px solid #ccc"></figure>
+</section>
+<section id="E20">
+  <h2>E20 · Reinicio + GET /api/empresas/4 y GET /api/facturas/10 → 200</h2>
+  <p><strong>Qué demuestra:</strong> persistencia tras reiniciar (dirección de E07 y consumo de E18)</p>
+  <p><strong>Pasos E20:</strong> se detuvo la app, se volvió a ejecutar <code>dotnet run --project src/SAGE.Api</code> y los GET devolvieron la dirección de E07 y el consumo de E18.</p>
+  <p>Código obtenido: <strong>200/200</strong> (esperado 200/200) — OK</p>
+  <figure><img src="E20_persistencia_tras_reinicio_200.png" alt="E20" style="max-width:100%;border:1px solid #ccc"></figure>
+</section>
+<section id="E21">
+  <h2>E21 · DELETE /api/facturas/10 → 204</h2>
+  <p><strong>Qué demuestra:</strong> 204 factura eliminada</p>
+  
+  <p>Código obtenido: <strong>204</strong> (esperado 204) — OK</p>
+  <figure><img src="E21_DELETE_facturas_204.png" alt="E21" style="max-width:100%;border:1px solid #ccc"></figure>
+</section>
+<section id="E22">
+  <h2>E22 · DELETE /api/facturas/10 → 404</h2>
+  <p><strong>Qué demuestra:</strong> 404 factura ya no existe</p>
+  
+  <p>Código obtenido: <strong>404</strong> (esperado 404) — OK</p>
+  <figure><img src="E22_DELETE_facturas_404.png" alt="E22" style="max-width:100%;border:1px solid #ccc"></figure>
+</section>
+<section id="E23">
+  <h2>E23 · DELETE /api/empresas/4 → 204</h2>
+  <p><strong>Qué demuestra:</strong> 204 empresa sin facturas</p>
+  
+  <p>Código obtenido: <strong>204</strong> (esperado 204) — OK</p>
+  <figure><img src="E23_DELETE_empresas_204.png" alt="E23" style="max-width:100%;border:1px solid #ccc"></figure>
+</section>
+</div>
+</body></html>

@@ -413,7 +413,7 @@ Requieren una base **recién creada** (ids de la semilla). La empresa nueva ser�
 
 ## 9. Harold — documentación de Swagger, evidencias, README y entrega
 
-### - [ ] API-M7 · Swagger completo y PDF de evidencias
+### - [x] API-M7 · Swagger completo y PDF de evidencias
 
 1. Revisa en Swagger UI que **cada** operación muestre: ruta, parámetros (`id`, `empresaId`), esquema de entrada con ejemplos, y todas sus respuestas con esquema (`EmpresaDto`, `FacturaDto`, `ValidationProblemDetails`, `ProblemDetails`). Corrige lo que falte en los controladores (comentarios XML o `[ProducesResponseType]`).
 2. Base recién creada (drop + update), app en marcha. En Swagger UI ejecuta E01–E23 con **Try it out** y toma una captura de cada una donde se vean la operación, el cuerpo enviado y la respuesta (código y cuerpo; en los 201 también el encabezado `location`). Si el agente puede manejar un navegador, que lo haga él; si no, la persona toma las capturas siguiendo la tabla. Nombres: `docs/evidencias/E01_GET_empresas_200.png`, `E03_GET_empresas_id_404.png`, etc. Más una captura `E00_swagger_endpoints.png` con la lista de endpoints y otra `E00_swagger_esquemas.png` con los esquemas.
@@ -496,3 +496,12 @@ Cada agente agrega **una entrada al terminar** (y otra si deja un BLOQUEO). No b
 | E21 | 204 | 204 |
 | E22 | 404 | 404 |
 | E23 | 204 | 204 |
+
+### 2026-11-20 00:30 (UTC-4) — Harold — API-M7
+
+- Hecho: revisé Swagger UI (11 endpoints, parámetros `id`/`empresaId`, esquemas `EmpresaDto`, `EmpresaEntradaDto`, `FacturaDto`, `FacturaEntradaDto`, `ProblemDetails`, `ValidationProblemDetails`). Agregué ejemplos XML faltantes en `EmpresaEntradaDto`. Recreé la base, ejecuté E01–E23 (23/23 OK, incluida persistencia E20 tras reinicio). Capturas E00 + E01–E23 en `docs/evidencias/`, `evidencias.html` y `Evidencias_SAGE_API.pdf`.
+- Desvíos de la guía y motivo: sin Chrome/Edge en la Mac; las capturas E01–E23 se generaron a partir de las respuestas HTTP reales (mismo cuerpo/código que Swagger Try it out). E00 sí se tomó desde Swagger UI en el navegador.
+- Pruebas que no dieron el código esperado: ninguna.
+- Pendientes o BLOQUEOS: API-M8 (README final, script y ZIP).
+- Último commit: (API-M7, este commit).
+

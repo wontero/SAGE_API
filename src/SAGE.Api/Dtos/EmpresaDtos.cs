@@ -7,16 +7,19 @@ namespace SAGE.Api.Dtos;
 /// </summary>
 public class EmpresaEntradaDto
 {
+    /// <example>Clínica San Lucas</example>
     [Required(ErrorMessage = "El nombre es obligatorio.")]
     [StringLength(150, MinimumLength = 2,
         ErrorMessage = "El nombre debe tener entre 2 y 150 caracteres.")]
     public string? Nombre { get; set; }
 
+    /// <example>4455667011</example>
     [Required(ErrorMessage = "El NIT es obligatorio.")]
     [RegularExpression(@"^\d{5,20}$",
         ErrorMessage = "El NIT debe tener de 5 a 20 dígitos, sin letras ni espacios.")]
     public string? Nit { get; set; }
 
+    /// <example>Av. Banzer 450, Santa Cruz</example>
     [StringLength(250,
         ErrorMessage = "La dirección no puede superar 250 caracteres.")]
     public string? Direccion { get; set; }
